@@ -109,35 +109,50 @@
      
         </div>
 
-        <form  method="GET" onsubmit="submit()">
+        <form  method="POST" onsubmit="submit()">
+        <div class="message-box">
+            <?php
+
+                if(isset($_POST['submit']))
+                {
+                    $first_name = $_POST['first_name'];
+                    $last_name = $_POST['last_name'];
+                    $phone = $_POST['phone'];
+                    $password = $_POST['password'];
+                    $confirm_password = $_POST['confirm_password'];
+                    if($password !== $confirm_password)
+                    ?>
+                        <p>Password not matched</p>
+                    <?php
+                    
+                }
+
+            ?>
+        </div>
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Full Name</span>
-                    <input type="text" placeholder="Enter your name" name="name" required>
+                    <span class="details">First Name</span>
+                    <input type="text" placeholder="First Name" name="first_name" required>
                 </div>
                 <div class="input-box">
-                    <span class="details">Username</span>
-                    <input type="text" placeholder="Username" required>
+                    <span class="details">Last Name</span>
+                    <input type="text" placeholder="Last Name" name="last_name" required>
                 </div>
                 <div class="input-box">
-                    <span class="details">Email</span>
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Mobile</span>
-                    <input type="tel" placeholder="Number" required>
+                    <span class="details">Phone</span>
+                    <input type="text" placeholder="phone" name="phone" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Password" name="password" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Confirm Password</span>
-                    <input type="password" placeholder="Confirm Password" required>
+                    <input type="password" placeholder="Confirm Password" name="confirm_password" required>
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Register">
+                <input type="submit" name="submit" value="Register">
             </div>
         </form>
     </div>
@@ -155,13 +170,3 @@
 
 
 
-<?php
-
-if(isset($_GET['name']))
-{
-    echo $_GET['name'];
-}
-
-
-
-?>
